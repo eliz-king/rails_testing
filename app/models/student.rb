@@ -1,4 +1,4 @@
-class Student < ApplicationRecord
+class Student < UserRecord
   # Validations
   validates_presence_of :name, :student_number, :gpa
   validates_uniqueness_of :name

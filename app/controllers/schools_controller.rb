@@ -1,7 +1,7 @@
 class SchoolsController < ApplicationController
 
   before_action :find_school, only: [:show, :edit, :destroy, :update]
-  
+
   # GET /schools
   def index
     @school = current_user.schools
@@ -26,6 +26,14 @@ class SchoolsController < ApplicationController
 
     if @school.save
       redirect_to 
+    else
+      render :edit
+    end
+  end
+
+  def update
+    if @school.update(school_params)
+      redirect_to
     else
       render :edit
     end
