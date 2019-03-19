@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+User.create(email: 'name@email.com', password: 'password')
+
 10.times do
   student.create do
     school.create

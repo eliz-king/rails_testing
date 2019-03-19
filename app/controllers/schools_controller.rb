@@ -4,7 +4,7 @@ class SchoolsController < ApplicationController
 
   # GET /schools
   def index
-    @school = current_user.schools
+    @school = School.all
   end 
 
   # GET /schools/1
@@ -13,7 +13,7 @@ class SchoolsController < ApplicationController
 
   # GET /schools/new
   def new
-    @school = current_user.school.new
+    @school = School.new
   end 
 
   # GET /schools/edit
@@ -22,18 +22,18 @@ class SchoolsController < ApplicationController
 
   # POST /schools
   def create
-    @school = current_user.school.new(school_params)
+    @school = School.new(school_params)
 
     if @school.save
-      redirect_to 
+      redirect_to schools_path
     else
-      render :edit
+      render :new
     end
   end
 
   def update
     if @school.update(school_params)
-      redirect_to
+      redirect_to schools_path
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class SchoolsController < ApplicationController
   # DELETE /schools
   def destroy
     @school.destroy
-    redirect_to
+    redirect_to schools_path
   end
 
   private
@@ -54,6 +54,6 @@ class SchoolsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
 
     def find_school
-      @school = current_user.school.find(params[:id])
+      @school = School.find(params[:id])
     end
 end

@@ -7,7 +7,8 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-
+# require 'devise'
+# require 'support/controller_macros'
 # Should Matchers Configuration
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -19,9 +20,12 @@ end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  
 
   # Devise Controller Spec Configuration
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.extend ControllerMacros, type: :controller
+
 
   # Database Cleaner Configuration
   config.before(:suite) do
@@ -42,8 +46,6 @@ RSpec.configure do |config|
 end
 
 
-require 'devise'
-require "support/controller_macros"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 # Requires supporting ruby files with custom matchers and macros, etc, in
